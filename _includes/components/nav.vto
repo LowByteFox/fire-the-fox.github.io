@@ -1,0 +1,66 @@
+---
+buttons: ["blog", "projects", "socials"]
+---
+
+<nav>
+    {{> function enumerate(iterable) {
+        let ret = {}
+        let i = 0;
+
+        for (let item of iterable) {
+            ret[i] = item;
+            i++;
+        }
+
+        return ret;
+    }}}
+    <div class="name">Ján Gajdoš</div>
+    <div class="navigation">
+        {{ for i, element of enumerate(buttons) }}
+        <a href="/{{ element |> toLowerCase }}">{{ element }}</a>
+            {{ if buttons.length -1 == i }}
+            {{ else }}
+            <div> | </div>
+            {{ /if }}
+        {{ /for }}
+    </div>
+</nav>
+
+<style>
+nav {
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.name {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 2.34375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.navigation {
+    display: flex;
+    gap: 15px;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 2.34375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.navigation > a {
+    text-decoration: none;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 2.34375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+</style>
